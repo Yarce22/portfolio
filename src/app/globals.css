@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-BackgroundHero: #2d2e31;
+  --color-Background: #25262a;
+  --color-Titles: #859f3d;
+  --color-Text: #fff;
+
+  --font-Geist: "Geist", sans-serif;
+  --font-Geist-Mono: "Geist Mono", monospace;
+}
