@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    formats: ['image/webp'],
+    domains: [
+      'localhost',
+      'd33wubrfki0l68.cloudfront.net',
+      'your-domain.com'
+    ]
+  }
 };
 
 export default nextConfig;

@@ -21,6 +21,8 @@ const Header: React.FC = () => {
       }
     };
 
+    handleResize();
+
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -44,7 +46,7 @@ const Header: React.FC = () => {
         <BurgerIcon  menuOpen={menuOpen} toggleMenu={toggleMenu} />
       )}
       {isMobile && menuOpen && (
-        <ul className="absolute z-50 flex flex-col gap-6 items-center top-[80px] left-0 w-full px-6 py-10 text-White text-xl font-Karla font-bold tracking-[1.36px]">
+        <ul className="absolute z-50 flex flex-col gap-6 items-center top-[80px] left-0 w-full px-6 py-10 text-White text-xl font-Geist font-bold tracking-[1.36px] bg-Background">
           <Links /> 
         </ul>
       )}
