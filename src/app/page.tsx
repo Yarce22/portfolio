@@ -3,7 +3,7 @@ import { AboutMe } from "src/components/AboutMe";
 import { Skills } from "src/components/Skills";
 import { Portfolio } from "src/components/Portfolio";
 
-export const Home = () => {
+export default function Page() {
   return (
     <main className="pt-[88px]">
       <Hero />
@@ -13,5 +13,3 @@ export const Home = () => {
     </main>
   )
 }
-
-export default Home;
