@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { BurgerIcon } from "./BurgerMenu"
 import { Links } from "./Links"
 import { useStore } from "Store/index"
@@ -11,11 +11,12 @@ import Image from "next/image"
 const Header: React.FC = () => {
 	const isMobile = useStore((state: Store) => state.isMobile)
 	const setIsMobile = useStore((state: Store) => state.setIsMobile)
-  const [menuOpen, setMenuOpen] = useState(false);
+	const menuOpen = useStore((state: Store) => state.menuOpen)
+	const setMenuOpen = useStore((state: Store) => state.setMenuOpen)
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth <= 1024);
       if (!isMobile) {
         setMenuOpen(false);
       }
@@ -28,7 +29,7 @@ const Header: React.FC = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [isMobile, setIsMobile]);
+  }, [isMobile, setIsMobile, setMenuOpen]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);

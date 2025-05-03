@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     domains: [
       'localhost',
       'd33wubrfki0l68.cloudfront.net',
-      'your-domain.com'
     ]
   }
 };
