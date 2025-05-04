@@ -47,7 +47,7 @@ const Form: React.FC = () => {
 
   return (
     <form
-      className="w-full flex flex-col gap-3 px-6 py-8 bg-linear-to-br from-Titles to-green-950 rounded-2xl"
+      className="w-[80%] lg:w-1/2 flex flex-col gap-3 px-6 py-8 bg-linear-to-br from-Titles to-green-950 rounded-2xl"
       onSubmit={handleSubmit}
     >
       <input

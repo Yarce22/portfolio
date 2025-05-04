@@ -7,6 +7,7 @@ import { useStore } from "Store/index"
 import Logo from "assets/logo_AM.svg"
 import "./styles.css"
 import Image from "next/image"
+import Link from "next/link"
 
 const Header: React.FC = () => {
 	const isMobile = useStore((state: Store) => state.isMobile)
@@ -16,7 +17,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1024);
+      setIsMobile(window.innerWidth < 1024);
       if (!isMobile) {
         setMenuOpen(false);
       }
@@ -36,10 +37,10 @@ const Header: React.FC = () => {
   };
 
 	return (
-		<nav className="fixed z-50 flex items-center justify-between w-full p-4 font-bold text-Text bg-Background">
-			<div className="w-14 h-14 lg:w-8 lg:h-8">
+		<nav className="fixed z-50 flex items-center justify-between w-full p-4 lg:px-10 font-bold text-Text bg-Background">
+			<Link href="/" className="w-14 h-14 lg:w-20 lg:h-20">
 				<Image src={Logo} alt="logo-icon" className="w-full h-full" />
-			</div>
+			</Link>
 			<ul className={`${!isMobile ? 'flex items-center gap-11' : 'hidden'}`}>
         <Links />
       </ul>
