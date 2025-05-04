@@ -36,7 +36,7 @@ const Header: React.FC = () => {
   };
 
 	return (
-		<nav className="fixed flex items-center justify-between w-full p-4 font-bold text-Text bg-Background">
+		<nav className="fixed z-50 flex items-center justify-between w-full p-4 font-bold text-Text bg-Background">
 			<div className="w-14 h-14 lg:w-8 lg:h-8">
 				<Image src={Logo} alt="logo-icon" className="w-full h-full" />
 			</div>

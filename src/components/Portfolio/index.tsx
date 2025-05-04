@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useStore } from "src/Store"
 import { GET } from "src/app/api/netlify/route"
 import { Button } from "../shared/Button"
+import Link from "next/link"
 
 const Portfolio: React.FC = () => {
   const fetchProjects = useStore((state) => state.projectsNetlify)
@@ -21,7 +22,7 @@ const Portfolio: React.FC = () => {
   }, [pushFetch])
   
   return (
-    <section id="portfolio" className="flex flex-col items-center py-20 px-6 bg-BackgroundHero">
+    <section id="portfolio" className="flex flex-col items-center py-32 px-6 bg-BackgroundHero">
       <h2 className="mb-12 text-Titles text-5xl text-center font-Geist-Mono font-bold">PORTFOLIO</h2>
       {fetchProjects.map((project) => (
         <div key={project.id} className="mb-10">
@@ -39,7 +40,9 @@ const Portfolio: React.FC = () => {
           </a>
         </div>
       ))}
-      <Button label="View all projects" />
+      <Link href="/projects">
+        <Button label="View all projects" />
+      </Link>
     </section>
   )
 }

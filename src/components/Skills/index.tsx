@@ -21,7 +21,7 @@ const iconSkills = [
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-20 px-5 bg-Background">
+    <section id="skills" className="py-32 px-5 bg-Background">
       <h2 className="mb-20 text-Titles text-5xl text-center font-Geist-Mono font-bold">SKILLS</h2>
       <div className="grid place-items-center gap-4 grid-cols-2">
         {iconSkills.map((skill) => (
