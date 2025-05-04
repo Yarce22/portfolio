@@ -10,7 +10,7 @@ const Form: React.FC = () => {
   });
   const [status, setStatus] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -18,12 +18,12 @@ const Form: React.FC = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('Enviando...');
 
     try {
-      const response = await fetch('/api/contact', { // <-- URL de tu API Route
+      const response = await fetch('/api/contact', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const Form: React.FC = () => {
 
       if (response.ok) {
         setStatus('¡Mensaje enviado con éxito!');
-        setFormData({ name: '', email: '', message: '' }); // Limpiar formulario
+        setFormData({ name: '', email: '', message: '' }); 
       } else {
         setStatus(`Error al enviar el mensaje: ${result.error || 'Error desconocido'}`);
       }

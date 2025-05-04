@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { Button } from "../Button"
 import Logo from "assets/logo_AM.svg"
 import github from "assets/Icons/icons8-github-white.svg"
 import linkedin from "assets/Icons/icons8-linkedin.svg"
