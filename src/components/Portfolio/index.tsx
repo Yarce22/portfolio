@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link";
 import { useState } from "react";
 import { Projects } from "../Projects";
 import { Certificates } from "../Certificates";
@@ -27,17 +26,16 @@ const Portfolio: React.FC = () => {
     <section  id="portfolio" className="flex flex-col items-center py-32 px-6 bg-BackgroundHero">
       <h2 className="mb-12 text-Titles text-5xl text-center font-Geist-Mono font-bold">PORTFOLIO</h2>
       <div>
-        <ul className="flex flex-row gap-10 items-center justify-between w-full p-4 lg:px-10 font-bold text-Text">
+        <ul className="flex flex-row gap-10 items-center justify-between w-full px-4 pt-4 pb-12 lg:px-10 font-bold text-Text">
           {navProjects.map(({ id, name, isActive }) => (
-            <Link
-              href="#portfolio"
+            <li
               key={id}
               onClick={() => handleNavActive(id)}
               className={`relative inline-block group cursor-pointer transition-color duration-300 ease-in-out hover:text-Titles ${isActive ? "text-Titles" : "text-White"}`}
             >
               {name.toUpperCase()}
               <span className="absolute left-0 bottom-[-2px] h-[2px] w-full bg-Titles transform scale-x-0 origin-left transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
-            </Link>
+            </li>
           ))}
         </ul>
       </div>

@@ -1,8 +1,10 @@
 "use client"
 import Image from "next/image"
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { GET } from "src/app/api/certificates/route"
 import { useStore } from "src/Store"
+import { Button } from "../shared/Button"
+import Link from "next/link"
 
 const Certificates: React.FC = () => {
   const certificates = useStore((state) => state.certificates)
@@ -12,29 +14,41 @@ const Certificates: React.FC = () => {
     const fetchCertificates = async () => {
       const response = await GET()
       const data = await response.json()
-      console.log("certificates", data.certificatesCollection.items)
-      setCertificates(data.certificatesCollection.items)
+      const lastCertificates = data.certificatesCollection.items.slice(0, 6)
+      setCertificates(lastCertificates)
     }
     fetchCertificates()
   }, [setCertificates])
 
     return (
-        <section id="certificates" className="flex flex-col lg:flex-row lg:gap-10 items-center lg:justify-center py-30 px-6 lg:pt-0 bg-Background">
-            <h2 className="mt-20 mb-10 text-Titles text-5xl text-center lg:text-left font-Geist-Mono font-bold">
-                CERTIFICATES
-            </h2>
+        <section className="flex flex-col lg:flex-row items-center lg:justify-center pb-30 px-6 lg:pt-0">
             {
               certificates.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                  {certificates.map((certificate: Certificate, index: number) => (
-                    <div key={index}>
-                      <h3>{certificate.title}</h3>
-                      <Image src={certificate.img.url} alt={certificate.title} width={100} height={100} />
+                <div className="flex flex-col justify-center items-center gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                      {certificates.map((certificate: Certificate, index: number) => (
+                        <div key={index} className="grid place-items-center grid-rows-[100px_1fr]">
+                          <h3 className="pb-4 text-Text text-xl text-center font-Geist-Mono font-bold">
+                            {certificate.title}
+                          </h3>
+                          <a href={certificate.img.url}>
+                            <Image
+                              src={certificate.img.url}
+                              alt={certificate.title}
+                              layout="responsive"
+                              width={1}
+                              height={1}
+                            />
+                          </a>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                    <Link href="/certificates">
+                      <Button label="View all certificates"  />
+                    </Link>
                 </div>
               ) : (
-                <p>No certificates found</p>
+                <p className="pb-4 text-Text text-xl text-center font-Geist-Mono font-bold">No certificates found</p>
               )
             }
         </section>

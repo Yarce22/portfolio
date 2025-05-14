@@ -22,14 +22,14 @@ const Projects: React.FC = () => {
   }, [pushFetch])
   
   return (
-    <section>
+    <section className="flex flex-col justify-center items-center">
       <div className="grid place-items-center gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {fetchProjects.map((project) => (
           <div key={project.id} className="mb-10">
-            <h2 className="pb-4 text-Text text-xl text-center font-Geist-Mono font-bold">
-              {project.name.split("-").slice(0, -1).join(" ")}
-            </h2>
             <a href={project.url} className="w-screen">
+              <h2 className="pb-4 text-Text text-xl text-center font-Geist-Mono font-bold">
+                {project.name.split("-").slice(0, -1).join(" ")}
+              </h2>
               <Image
                 src={project.screen}
                 alt={project.name}
@@ -41,7 +41,7 @@ const Projects: React.FC = () => {
           </div>
         ))}
       </div>
-      <Link href="/projects">
+      <Link href="/projects" className="inline-block">
         <Button label="View all projects" />
       </Link>
     </section>
