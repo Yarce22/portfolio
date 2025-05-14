@@ -19,14 +19,6 @@ const Links: React.FC = () => {
         PORTFOLIO
         <span className="absolute left-0 bottom-[-2px] h-[2px] w-full bg-Titles transform scale-x-0 origin-left transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
       </Link>
-      <Link href="/#skills" onClick={() => setMenuOpen(false)} className="relative inline-block group cursor-pointer transition-color duration-300 ease-in-out hover:text-Titles">
-        SKILLS
-        <span className="absolute left-0 bottom-[-2px] h-[2px] w-full bg-Titles transform scale-x-0 origin-left transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
-      </Link>
-      <Link href="https://platzi.com/p/alejomira22/" onClick={() => setMenuOpen(false)} className="relative inline-block group cursor-pointer transition-color duration-300 ease-in-out hover:text-Titles">
-        CERTIFICATES
-        <span className="absolute left-0 bottom-[-2px] h-[2px] w-full bg-Titles transform scale-x-0 origin-left transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
-      </Link>
       <Link href="#contact" onClick={() => setMenuOpen(false)} className="relative cursor-pointer">
         <Button label="CONTACT ME" />
       </Link>

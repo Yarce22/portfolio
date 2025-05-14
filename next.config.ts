@@ -6,8 +6,9 @@ const nextConfig: NextConfig = {
     domains: [
       'localhost',
       'd33wubrfki0l68.cloudfront.net',
+      'images.ctfassets.net'
     ]
-  }
+  },
 };
 
 export default nextConfig;

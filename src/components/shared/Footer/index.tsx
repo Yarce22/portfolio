@@ -14,7 +14,7 @@ const socialMedia = [
 
 const Footer = () => {
   return(
-    <footer id="contact" className="bg-Background">
+    <footer id="contact" className="bg-BackgroundHero">
       <div className="flex flex-col items-center pt-32 pb-10 bg-linear-to-l from-Titles to-green-950 rounded-t-[80px] opacity-80">
         <h2 className="pb-10 px-8 text-Text text-4xl text-center font-Geist font-bold">CONTACT ME</h2>
         <p className="px-8 pb-10 lg:px-40 text-xl text-Text font-Geist">Transformemos juntos los obstáculos en oportunidades. Mi compromiso es entregar un trabajo de calidad que no solo cumpla, sino que supere tus expectativas.</p>

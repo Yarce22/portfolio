@@ -1,52 +1,55 @@
 "use client"
-import Image from "next/image"
-import { useEffect } from "react"
-import { useStore } from "src/Store"
-import { GET } from "src/app/api/netlify/route"
-import { Button } from "../shared/Button"
-import Link from "next/link"
+import Link from "next/link";
+import { useState } from "react";
+import { Projects } from "../Projects";
+import { Certificates } from "../Certificates";
+import { Skills } from "../Skills";
 
 const Portfolio: React.FC = () => {
-  const fetchProjects = useStore((state) => state.projectsNetlify)
-  const pushFetch = useStore((state) => state.setProjectsNetlify)
+  const [navProjects, setNavProjects] = useState([
+    {id: 1, name: "Projects", isActive: true, Component: Projects},
+    {id: 2, name: "Certificates", isActive: false, Component: Certificates},
+    {id: 3, name: "Skills", isActive: false, Component: Skills},
+  ]);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const response = await GET();
-      const data = await response.json();
-      const lastProjects = data.slice(0, 6)
-      pushFetch(lastProjects);
-    }
+  const handleNavActive = (id: number) => {
+    const newStateNavProjects = navProjects.map((project) => {
+      if (project.id === id) {
+        return { ...project, isActive: true };
+      } else {
+        return { ...project, isActive: false };
+      }
+    })
+    setNavProjects(newStateNavProjects);
+  };
 
-    fetchProjects();
-  }, [pushFetch])
-  
   return (
-    <section id="portfolio" className="flex flex-col items-center py-32 px-6 bg-BackgroundHero">
+    <section  id="portfolio" className="flex flex-col items-center py-32 px-6 bg-BackgroundHero">
       <h2 className="mb-12 text-Titles text-5xl text-center font-Geist-Mono font-bold">PORTFOLIO</h2>
-      <div className="grid place-items-center gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {fetchProjects.map((project) => (
-          <div key={project.id} className="mb-10">
-            <h2 className="pb-4 text-Text text-xl text-center font-Geist-Mono font-bold">
-              {project.name.split("-").slice(0, -1).join(" ")}
-            </h2>
-            <a href={project.url} className="w-screen">
-              <Image
-                src={project.screen}
-                alt={project.name}
-                layout="responsive"
-                width={1}
-                height={1}
-              />
-            </a>
-          </div>
-        ))}
+      <div>
+        <ul className="flex flex-row gap-10 items-center justify-between w-full p-4 lg:px-10 font-bold text-Text">
+          {navProjects.map(({ id, name, isActive }) => (
+            <Link
+              href="#portfolio"
+              key={id}
+              onClick={() => handleNavActive(id)}
+              className={`relative inline-block group cursor-pointer transition-color duration-300 ease-in-out hover:text-Titles ${isActive ? "text-Titles" : "text-White"}`}
+            >
+              {name.toUpperCase()}
+              <span className="absolute left-0 bottom-[-2px] h-[2px] w-full bg-Titles transform scale-x-0 origin-left transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
+            </Link>
+          ))}
+        </ul>
       </div>
-      <Link href="/projects">
-        <Button label="View all projects" />
-      </Link>
+      <div>
+        {navProjects.map(({ id, isActive, Component }) => {
+          if (isActive) {
+            return <Component key={id} />;
+          }
+        })}
+      </div>
     </section>
   )
-}
+};
 
 export { Portfolio }

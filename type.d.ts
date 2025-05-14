@@ -4,3 +4,10 @@ interface Store {
   menuOpen: boolean,
   setMenuOpen: (value: boolean) => void
 }
+
+interface Certificate {
+  title: string,
+  img: {
+    url: string
+  }
+}
